@@ -3,6 +3,8 @@ public class trainee {
     String user_name;
     String user_username;
     String user_password;
+    String email;
+    course enrolled_courses = new course("ISYS1118", "Software Engineering Fundamental's", "Teaching the fundamental's of software engineering.", "4 months", "$1000");
     public trainee(int id, String name, String username, String password) {
        userId = id;
        user_name = name;
@@ -28,7 +30,7 @@ public class trainee {
 
     // Function to display courses. Temporarily this will only have 1 course just for showcase purposes.
     public void viewCourses() {
-        System.out.println("Course: Software Engineering Fundamental's");
+        System.out.println("Course: " + enrolled_courses.course_title);
     }
 
     // This function would send the refund request into the system, which the finance manager will be able to view later.
@@ -39,5 +41,9 @@ public class trainee {
     //This function serves as a dummy, normally it would send the file into a system.
     public void sendComplaint(String complaint) {
         // Sent into the system
+    }
+
+    public course get_course() {
+        return enrolled_courses;
     }
 }

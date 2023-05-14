@@ -24,8 +24,8 @@ public class financeManager {
     }
 
     public void acceptRequest() {
-        refund_payment();
         System.out.println("Refund Request Accepted.");
+        refund_payment();
     }
 
     public void denyRequest() {
@@ -35,5 +35,6 @@ public class financeManager {
 
     public void refund_payment() {
         // Payment gets refunded to user by the system. Not displayed in terminal as the finance manager won't see this.
+        System.out.println("Refund Completed.");
     }
 }
