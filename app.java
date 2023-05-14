@@ -110,8 +110,52 @@ class app {
         in.close();
     }
 
+    // Menu option for manager
     public static void managerOption() {
+        //Temp manager user
+        manager user = new manager(0003, "Manager Guy", "ManagerGuy123123", "AlphaPlateFour");
+        // The manager would have more options but for this scenario we only need view complaints.
+        System.out.println("1: View Complaints ");
+        Scanner in = new Scanner(System.in);
 
+        int userInput = in.nextInt();
+        in.nextLine();
+
+        if (userInput == 1) {
+            // Complaints are then displayed to the manager
+            System.out.println("Complaint's: ");
+            user.viewComplaints();
+            System.out.println("Select a complaint to review:");
+            int complaintChoice = in.nextInt();
+            in.nextLine();
+
+            if (complaintChoice == 1) {
+                // Complaint chosen is expanded
+                System.out.println("Title: Stream quality is bad.");
+                System.out.println("Description: \nI'm currently enrolled into the online class rather than the face to face class.");
+                System.out.println("The stream quality for the online classes have been absolutely terrible. I'm not sure if ");
+                System.out.println("its a camera issue or a connection issue however the video quality feels like.");
+                System.out.println("I'm watching it in 360p. Which sure could have been fine back then, however with technology nowadays");
+                System.out.println("I feel like it's unacceptable especially when the prices for the courses aren't exactly small."); 
+
+                // Manager then types in their response which will get sent to the system.
+                System.out.println("Please type your response to the complaint: ");
+                String response = in.nextLine();
+                user.respondToComplaints(response);
+            } else if (complaintChoice == 2) {
+                // Complaint chosen is expanded
+                System.out.println("Title: Course too hard.");
+                System.out.println("Description: \nI'm currently enrolled in the Software Engineering Fundamental's course and");
+                System.out.println("i find the course to be too hard as of currently. I believe the structure of the course could be better.");
+                System.out.println("The courses feel too rushed.");
+
+                // Manager then types in their response which will get sent to the system.
+                System.out.println("Please type your response to the complaint: ");
+                String response = in.nextLine();
+                user.respondToComplaints(response);
+            }
+        }
+        in.close();
     }
 
 }
