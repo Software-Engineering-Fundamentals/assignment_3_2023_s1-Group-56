@@ -66,7 +66,48 @@ class app {
     }
 
     public static void financeManagerOption() {
+        financeManager user = new financeManager(0002, "Alfred Charles", "AlfredCharles77", "DonkeyBottles93");
+        System.out.println("1: Assess Refund Requests");
+        Scanner in = new Scanner(System.in);
 
+        int userInput = in.nextInt();
+        in.nextLine();
+        if (userInput == 1) {
+            System.out.println("Select a refund request to review:");
+            user.viewRefundRequests();
+            int reviewChoice = in.nextInt();
+            in.nextLine();
+            if (reviewChoice == 1) {
+                System.out.println("Title: I dislike this course");
+                System.out.println("Date: 10/06/2023");
+                System.out.println("Course: Software Engineering Fundamental's");
+                System.out.println("Course start date: 15/05/2023");
+                System.out.println("Description: ");
+                System.out.println("After trying out the course for the past couple of weeks, I've found that I dislike this course.");
+                System.out.println("I don't have an interest in the course anymore.");
+
+                System.out.println("\n\n1: Accept Request\n2: Deny Request");
+                int acceptOrDeny = in.nextInt();
+                in.nextLine();
+
+                user.acceptOrDeny(acceptOrDeny);
+            } else if (reviewChoice == 2) {
+                System.out.println("Title: Emergency situation at home");
+                System.out.println("Date: 10/05/2023");
+                System.out.println("Course: Software Engineering Fundamental's");
+                System.out.println("Course start date: 15/05/2023");
+                System.out.println("Description: ");
+                System.out.println("An emergency has occured back at home, so I will not be able to attend the first session in 3 days time.");
+                System.out.println("As I don't want to waste money, I would like to request a refund.");
+
+                System.out.println("\n\n1: Accept Request\n2: Deny Request");
+                int acceptOrDeny = in.nextInt();
+                in.nextLine();
+
+                user.acceptOrDeny(acceptOrDeny);
+            }
+        }
+        in.close();
     }
 
     public static void managerOption() {
