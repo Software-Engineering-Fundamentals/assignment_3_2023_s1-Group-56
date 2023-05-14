@@ -1,3 +1,4 @@
+package Group_56.src.main.java.model;
 public class financeManager {
     int userId;
     String user_name;

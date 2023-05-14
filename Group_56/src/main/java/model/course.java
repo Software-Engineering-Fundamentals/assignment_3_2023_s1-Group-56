@@ -1,3 +1,4 @@
+package Group_56.src.main.java.model;
 public class course {
     String course_id;
     String course_title;

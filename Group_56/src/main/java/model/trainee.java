@@ -1,3 +1,4 @@
+package Group_56.src.main.java.model;
 public class trainee {
     int userId;
     String user_name;

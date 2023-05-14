@@ -1,3 +1,4 @@
+package Group_56.src.main.java.model;
 import java.util.Scanner;
 
 class app {
