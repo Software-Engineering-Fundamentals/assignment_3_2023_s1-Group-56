@@ -14,6 +14,10 @@ class app {
 
         // Reading an int to choose a role
         Scanner in = new Scanner(System.in);
+        while (!in.hasNextInt()) {
+            System.out.println("Please enter a valid integer: ");
+            in.next();
+        }
         int userInput = in.nextInt();
 
         
@@ -38,6 +42,10 @@ class app {
         System.out.println("2: Request Refund");
 
         Scanner in = new Scanner(System.in);
+        while (!in.hasNextInt()) {
+            System.out.println("Please enter a valid integer: ");
+            in.next();
+        }
         int userInput = in.nextInt();
         String userReason = in.nextLine();
         if (userInput == 1) {
@@ -56,28 +64,45 @@ class app {
             System.out.println("Provide a reason for refund: ");
             userReason = in.nextLine();
             //The user's request will be sent into the system.
-            user.requestRefund("Software Engineering Fundamental's", userReason);
+            user.requestRefund(user.get_course().get_title(), userReason);
             // When the request has been successfully sent to the system, the trainee will get a message, saying Thank You but
             // also notifying them that they will get an email when the request has been looked at.
             System.out.println("Thank you for sending a request. An email will be sent when the request has been looked at.");
+        } else {
+            System.out.println("Input was invalid");
         }
 
         in.close();
     }
 
     public static void financeManagerOption() {
+        /* This is a temporary finance manager, there is currently no login system or authentification. Under normal circumstances the system would detect
+        that the person who logged in had finance manager level authority however, that is not implemented currently as its not neccessary
+        for this scenario.*/
         financeManager user = new financeManager(0002, "Alfred Charles", "AlfredCharles77", "DonkeyBottles93");
         System.out.println("1: Assess Refund Requests");
         Scanner in = new Scanner(System.in);
-
+        // In this scenario, the finance manager chooses "Assess Refund Requests". 
+        while (!in.hasNextInt()) {
+            System.out.println("Please enter a valid integer: ");
+            in.next();
+        }
         int userInput = in.nextInt();
         in.nextLine();
         if (userInput == 1) {
+            // Refund requests are then displayed for the finance manager to see. Letting them choose one to review.
             System.out.println("Select a refund request to review:");
             user.viewRefundRequests();
+            while (!in.hasNextInt()) {
+                System.out.println("Please enter a valid integer: ");
+                in.next();
+            }
             int reviewChoice = in.nextInt();
             in.nextLine();
             if (reviewChoice == 1) {
+                /* Once a request has been chosen then the request will display its details. In this case that includes the title, date, course and description.
+                As the date and course date is needed to determine if the user has canceled 24 hours before the start date. Those are included in the request here.
+                */
                 System.out.println("Title: I dislike this course");
                 System.out.println("Date: 10/06/2023");
                 System.out.println("Course: Software Engineering Fundamental's");
@@ -86,12 +111,20 @@ class app {
                 System.out.println("After trying out the course for the past couple of weeks, I've found that I dislike this course.");
                 System.out.println("I don't have an interest in the course anymore.");
 
+                // Once done the finance manager is able to choose to accept or deny the request. Whichever choice they make is sent to the system.
                 System.out.println("\n\n1: Accept Request\n2: Deny Request");
+                while (!in.hasNextInt()) {
+                    System.out.println("Please enter a valid integer: ");
+                    in.next();
+                }
                 int acceptOrDeny = in.nextInt();
                 in.nextLine();
 
                 user.acceptOrDeny(acceptOrDeny);
             } else if (reviewChoice == 2) {
+                /* Once a request has been chosen then the request will display its details. In this case that includes the title, date, course and description.
+                As the date and course date is needed to determine if the user has canceled 24 hours before the start date. Those are included in the request here.
+                */
                 System.out.println("Title: Emergency situation at home");
                 System.out.println("Date: 10/05/2023");
                 System.out.println("Course: Software Engineering Fundamental's");
@@ -100,12 +133,21 @@ class app {
                 System.out.println("An emergency has occured back at home, so I will not be able to attend the first session in 3 days time.");
                 System.out.println("As I don't want to waste money, I would like to request a refund.");
 
+                // Once done the finance manager is able to choose to accept or deny the request. Whichever choice they make is sent to the system.
                 System.out.println("\n\n1: Accept Request\n2: Deny Request");
+                while (!in.hasNextInt()) {
+                    System.out.println("Please enter a valid integer: ");
+                    in.next();
+                }
                 int acceptOrDeny = in.nextInt();
                 in.nextLine();
 
                 user.acceptOrDeny(acceptOrDeny);
+            } else {
+                System.out.println("Input was invalid.");
             }
+        } else {
+            System.out.println("Input was invalid.");
         }
         in.close();
     }
@@ -118,6 +160,10 @@ class app {
         System.out.println("1: View Complaints ");
         Scanner in = new Scanner(System.in);
 
+        while (!in.hasNextInt()) {
+            System.out.println("Please enter a valid integer: ");
+            in.next();
+        }
         int userInput = in.nextInt();
         in.nextLine();
 
@@ -126,6 +172,10 @@ class app {
             System.out.println("Complaint's: ");
             user.viewComplaints();
             System.out.println("Select a complaint to review:");
+            while (!in.hasNextInt()) {
+                System.out.println("Please enter a valid integer: ");
+                in.next();
+            }
             int complaintChoice = in.nextInt();
             in.nextLine();
 
@@ -153,7 +203,11 @@ class app {
                 System.out.println("Please type your response to the complaint: ");
                 String response = in.nextLine();
                 user.respondToComplaints(response);
+            } else {
+                System.out.println("Input was invalid.");
             }
+        } else {
+            System.out.println("Input was invalid.");
         }
         in.close();
     }
